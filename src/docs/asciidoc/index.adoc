@@ -1,0 +1,8 @@
+= xchange
+OpenPayd;
+
+.request
+include::{snippets}/echoShouldSuccess/http-request.adoc[]
+
+.response
+include::{snippets}/echoShouldSuccess/http-response.adoc[]
