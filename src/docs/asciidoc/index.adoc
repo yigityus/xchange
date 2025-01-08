@@ -6,3 +6,36 @@ include::{snippets}/echoShouldSuccess/http-request.adoc[]
 
 .response
 include::{snippets}/echoShouldSuccess/http-response.adoc[]
+
+
+operation::index[snippets='curl-request,http-request,http-response']
+
+
+===
+
+operation::echoShouldSuccess[]
+
+
+----
+http://apilayer.net/api/live? access_key = 55ad02c7b27c1ad1fdb154de4cb14a36 & currencies = EUR,GBP,CAD,PLN & source = USD & format = 1
+----
+
+
+.Some JSON
+[source,json]
+----
+{
+  "success":true,
+  "terms":"https:\/\/currencylayer.com\/terms",
+  "privacy":"https:\/\/currencylayer.com\/privacy",
+  "timestamp":1736265783,
+  "source":"USD",
+  "quotes":{
+    "USDEUR":0.963825,
+    "USDGBP":0.799697,
+    "USDCAD":1.434325,
+    "USDPLN":4.10777
+  }
+}
+----
+

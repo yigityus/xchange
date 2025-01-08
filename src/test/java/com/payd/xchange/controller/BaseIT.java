@@ -38,9 +38,8 @@ public abstract class BaseIT {
 
     @BeforeEach
     void setUp(RestDocumentationContextProvider restDocumentation) {
-        this.spec = new RequestSpecBuilder().addFilter(documentationConfiguration(restDocumentation)) // <1>
+        this.spec = new RequestSpecBuilder().addFilter(documentationConfiguration(restDocumentation))
                 .build();
     }
-    // end::setup[]
 
 }
