@@ -5,13 +5,17 @@ import com.payd.xchange.model.ExchangeConvert;
 import com.payd.xchange.model.ExchangeRate;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class ExchangeServiceImpl implements ExchangeService {
 
     private final ExchangeProvider exchangeProvider;
+    private final TransactionService transactionService;
 
-    public ExchangeServiceImpl(ExchangeProvider exchangeProvider) {
+    public ExchangeServiceImpl(ExchangeProvider exchangeProvider, TransactionService transactionService) {
         this.exchangeProvider = exchangeProvider;
+        this.transactionService = transactionService;
     }
 
     @Override
@@ -21,10 +25,17 @@ public class ExchangeServiceImpl implements ExchangeService {
 
     @Override
     public ExchangeConvert convert(ExchangeConvert exchangeConvert) {
-        return exchangeConvert.with(exchangeConvert.amount() * rate(exchangeConvert), "TRX");
+        String trxId = UUID.randomUUID().toString();
+        Double rate = fetchRate(exchangeConvert);
+        Double convertedAmount = exchangeConvert.amount() * rate;
+        ExchangeConvert trx = exchangeConvert
+                .withConvertedAmountAndRateAndTrxId(
+                        convertedAmount, rate, trxId);
+
+        return transactionService.save(trx);
     }
 
-    private Double rate(ExchangeConvert exchangeConvert) {
+    private Double fetchRate(ExchangeConvert exchangeConvert) {
         ExchangeRate exchangeRate = new ExchangeRate(exchangeConvert.source(), exchangeConvert.target(), null);
         return exchangeProvider.exchange(exchangeRate).rate();
     }
