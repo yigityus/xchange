@@ -1,5 +1,11 @@
 package com.payd.xchange.model;
 
-public class HistoryFilterDto {
+import lombok.Data;
 
+import java.time.LocalDateTime;
+
+@Data
+public class HistoryFilterDto {
+    private String transactionId;
+    private LocalDateTime date;
 }

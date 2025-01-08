@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 public class Transaction {
@@ -20,7 +20,7 @@ public class Transaction {
     private Double rate;
     private String transactionId;
     @CreationTimestamp
-    private OffsetDateTime dateTime;
+    private LocalDateTime created;
 
     public void setId(Long id) {
         this.id = id;
@@ -78,11 +78,11 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public OffsetDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getCreated() {
+        return created;
     }
 
-    public void setDateTime(OffsetDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 }

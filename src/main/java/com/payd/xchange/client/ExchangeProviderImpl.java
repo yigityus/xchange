@@ -16,7 +16,11 @@ public class ExchangeProviderImpl implements ExchangeProvider {
     @Override
     public ExchangeDto exchange(ExchangeDto dto) {
         ProviderExchange providerExchange = currencyLayerClient.live(dto.getTarget(), dto.getSource());
-        dto.setRate(providerExchange.quotes().values().iterator().next());
-        return dto;
+        if (providerExchange.success()) {
+            dto.setRate(providerExchange.quotes().values().iterator().next());
+            return dto;
+        }
+
+        throw new IllegalArgumentException("Please provide accurate currency!");
     }
 }
