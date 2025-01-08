@@ -1,6 +1,7 @@
 package com.payd.xchange.controller;
 
 import com.payd.xchange.client.CurrencyLayerClient;
+import com.payd.xchange.model.ProviderExchange;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class EchoController {
     @GetMapping("/echo")
     public EchoLog echo(@RequestParam String name) {
 
-        String live = currencyLayerClient.live("EUR", "GBP");
+        ProviderExchange live = currencyLayerClient.live("EUR", "GBP");
         return new EchoLog(LocalDateTime.now(), name);
     }
     record EchoLog(LocalDateTime instant, String name) {}

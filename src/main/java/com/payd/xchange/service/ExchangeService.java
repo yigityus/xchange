@@ -1,7 +1,7 @@
-package com.payd.xchange.client;
+package com.payd.xchange.service;
 
 import com.payd.xchange.model.ExchangeRate;
 
-public interface ExchangeProvider {
+public interface ExchangeService {
     ExchangeRate exchange(ExchangeRate exchangeRate);
 }
