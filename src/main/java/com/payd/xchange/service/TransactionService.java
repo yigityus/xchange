@@ -1,7 +1,7 @@
 package com.payd.xchange.service;
 
-import com.payd.xchange.model.ExchangeConvert;
+import com.payd.xchange.model.ExchangeDto;
 
 public interface TransactionService {
-    ExchangeConvert save(ExchangeConvert record);
+    ExchangeDto save(ExchangeDto dto);
 }

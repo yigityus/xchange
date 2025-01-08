@@ -1,6 +1,6 @@
 package com.payd.xchange.client;
 
-import com.payd.xchange.model.ExchangeRate;
+import com.payd.xchange.model.ExchangeDto;
 import com.payd.xchange.model.ProviderExchange;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +14,9 @@ public class ExchangeProviderImpl implements ExchangeProvider {
     }
 
     @Override
-    public ExchangeRate exchange(ExchangeRate exchangeRate) {
-        ProviderExchange providerExchange = currencyLayerClient.live(exchangeRate.target(), exchangeRate.source());
-        return exchangeRate.withRate(providerExchange.quotes().values().iterator().next());
+    public ExchangeDto exchange(ExchangeDto dto) {
+        ProviderExchange providerExchange = currencyLayerClient.live(dto.getTarget(), dto.getSource());
+        dto.setRate(providerExchange.quotes().values().iterator().next());
+        return dto;
     }
 }

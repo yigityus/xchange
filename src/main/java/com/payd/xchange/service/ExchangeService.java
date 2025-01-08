@@ -1,9 +1,8 @@
 package com.payd.xchange.service;
 
-import com.payd.xchange.model.ExchangeConvert;
-import com.payd.xchange.model.ExchangeRate;
+import com.payd.xchange.model.ExchangeDto;
 
 public interface ExchangeService {
-    ExchangeRate exchange(ExchangeRate exchangeRate);
-    ExchangeConvert convert(ExchangeConvert exchangeConvert);
+    ExchangeDto exchange(ExchangeDto exchangeDto);
+    ExchangeDto convert(ExchangeDto exchangeConvertDto);
 }
