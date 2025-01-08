@@ -16,8 +16,6 @@ public class ExchangeProviderImpl implements ExchangeProvider {
     @Override
     public ExchangeRate exchange(ExchangeRate exchangeRate) {
         ProviderExchange providerExchange = currencyLayerClient.live(exchangeRate.target(), exchangeRate.source());
-        ExchangeRate liveExchangeRate = new ExchangeRate(exchangeRate.source(), exchangeRate.target(),
-                providerExchange.quotes().values().iterator().next());
-        return liveExchangeRate;
+        return exchangeRate.withRate(providerExchange.quotes().values().iterator().next());
     }
 }

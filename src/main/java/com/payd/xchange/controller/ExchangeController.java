@@ -1,5 +1,6 @@
 package com.payd.xchange.controller;
 
+import com.payd.xchange.model.ExchangeConvert;
 import com.payd.xchange.model.ExchangeRate;
 import com.payd.xchange.service.ExchangeServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,5 +19,10 @@ public class ExchangeController {
     @PostMapping("/exchange")
     public ExchangeRate exchange(@RequestBody ExchangeRate exchangeRate) {
         return exchangeService.exchange(exchangeRate);
+    }
+
+    @PostMapping("/convert")
+    public ExchangeConvert convert(@RequestBody ExchangeConvert exchangeConvert) {
+        return exchangeService.convert(exchangeConvert);
     }
 }
