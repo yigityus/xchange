@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 
@@ -12,6 +13,7 @@ import java.util.Objects;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Validated
 public class ExchangeDto {
     @NonNull
@@ -26,7 +28,7 @@ public class ExchangeDto {
     private LocalDateTime created;
 
     public Double getConvertedAmount() {
-        if (Objects.isNull(amount)) {
+        if (Objects.isNull(amount) || Objects.isNull(rate)) {
             return null;
         }
         return amount * rate;

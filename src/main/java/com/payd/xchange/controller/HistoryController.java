@@ -19,7 +19,7 @@ public class HistoryController {
 
     private final HistoryServiceImpl historyService;
 
-    @GetMapping("/all")
+    @GetMapping("/find-all")
     public List<ExchangeDto> findAll() {
         return historyService.findAll();
     }

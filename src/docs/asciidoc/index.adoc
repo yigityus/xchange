@@ -1,27 +1,30 @@
 = xchange
 OpenPayd;
 
-.request
-include::{snippets}/echoShouldSuccess/http-request.adoc[]
+[sidebar]
+./exchange
 
-.response
-include::{snippets}/echoShouldSuccess/http-response.adoc[]
+Simply fetches the rate from exchange provider and returns below response
 
+operation::exchangeShouldSuccess[snippets='curl-request,http-request,http-response']
 
-operation::index[snippets='curl-request,http-request,http-response']
+[sidebar]
+./convert
 
+Fetches the rate and converts given amount to the target currency and saves the transaction
 
-===
-
-operation::echoShouldSuccess[]
-
-
-----
-http://apilayer.net/api/live? access_key = 55ad02c7b27c1ad1fdb154de4cb14a36 & currencies = EUR,GBP,CAD,PLN & source = USD & format = 1
-----
+operation::convertShouldSuccess[snippets='curl-request,http-request,http-response']
 
 
-.Some JSON
+[sidebar]
+./find-all
+
+Fetches all transactions from db
+
+operation::findAllShouldSuccess[snippets='curl-request,http-request,http-response']
+
+
+.Sample CurrencyLayer Response
 [source,json]
 ----
 {
@@ -39,3 +42,7 @@ http://apilayer.net/api/live? access_key = 55ad02c7b27c1ad1fdb154de4cb14a36 & cu
 }
 ----
 
+
+----
+http://apilayer.net/api/live? access_key = <ACCESS_KEY> & currencies = EUR,GBP,CAD,PLN & source = USD & format = 1
+----
