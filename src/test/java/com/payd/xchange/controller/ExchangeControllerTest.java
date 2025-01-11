@@ -28,6 +28,7 @@ public class ExchangeControllerTest extends BaseIT {
 
     @Test
     void convertShouldSuccess() {
+        dto.setAmount(Double.valueOf(100F));
         given(this.spec)
                 .contentType(ContentType.JSON)
                 .body(dto)

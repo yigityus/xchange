@@ -76,8 +76,6 @@ public abstract class BaseIT {
     static {
         dto.setSource(source);
         dto.setTarget(target);
-        dto.setAmount(Double.valueOf(100F));
-
         hfDto.setDate(LocalDateTime.now().minusHours(1));
     }
 
